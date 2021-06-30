@@ -1,0 +1,31 @@
+package introduction;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Assignment {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "/home/cavisson/Downloads/Shivam/chromedriver");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://cleartrip.com");
+
+		WebElement StaticDropdown = driver.findElement(By.id("Adults"));
+		Select dropdown = new Select(StaticDropdown);
+		dropdown.selectByValue("3");
+
+		WebElement Dropdown = driver.findElement(By.id("Childrens"));
+		Select drop = new Select(Dropdown);
+		drop.selectByValue("4");
+		driver.findElement(By.id("DepartDate")).click();
+		driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight.ui-state-active ")).click();
+		driver.findElement(By.id("SearchBtn")).click();
+		System.out.println(driver.findElement(By.id("homeErrorMessage")).getText());
+	}
+
+}
